@@ -1,4 +1,4 @@
-package com.dauphine.blocker;
+package com.dauphine.blogger;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -11,15 +11,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 		info= @Info(
 				title = "Blogger box backend",
 				description = "Backend for the blogger box",
-				contact = @Contact(name = "Jules", email = "julesbobo2004@gmail.com"),
+				contact = @Contact(name = "Victor", email = "victor.cai@dauphine.eu"),
 				version = "1.0"
 
 		)
 )
-public class BlockerBoxBackendApplication {
+public class BloggerBoxBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BlockerBoxBackendApplication.class, args);
+		SpringApplication.run(BloggerBoxBackendApplication.class, args);
 	}
 
 }

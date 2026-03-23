@@ -1,4 +1,6 @@
-package com.dauphine.blocker;
+package com.dauphine.blogger.services;
+
+import com.dauphine.blogger.models.Category;
 
 import java.util.List;
 import java.util.UUID;

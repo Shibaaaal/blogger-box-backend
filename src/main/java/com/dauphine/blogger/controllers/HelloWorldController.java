@@ -1,4 +1,4 @@
-package com.dauphine.blocker;
+package com.dauphine.blogger.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 )
 public class HelloWorldController {
 
-    @GetMapping("/hello world")
+    @GetMapping("/hello-world")
     @Operation(summary = "Say hello world endpoint",
-    description = "Say hello world")
-    public String sayHello() {
+            description = "Say hello world")
+    public String sayHelloWorld() {
         return "Hello World!";
     }
 
-    @GetMapping("/hello{name}")
+    @GetMapping("/hello/{name}")
     @Operation(summary = "Hello by name endpoint",
-    description = "Return Hello {name} by path variable")
-    public String sayHelloName(@Parameter (description = "Name to greet") @PathVariable String name) {
+            description = "Return Hello {name} by path variable")
+    public String sayHello(@Parameter(description = "Name to greet") @PathVariable String name) {
         return "Hello " + name;
     }
 
