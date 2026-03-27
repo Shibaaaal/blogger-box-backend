@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/v1/posts")
 public class PostController {
 
@@ -44,20 +45,19 @@ public class PostController {
                 postRequest.getTitle(),
                 postRequest.getContent(),
                 postRequest.getAuthor(),
-                postRequest.getCategoryId()
-        );
+                postRequest.getCategoryId());
         return ResponseEntity.created(URI.create("/v1/posts/" + post.getId())).body(post);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Post> updatePost(@PathVariable UUID id, @RequestBody PostRequest postRequest) throws NotFoundException {
+    public ResponseEntity<Post> updatePost(@PathVariable UUID id, @RequestBody PostRequest postRequest)
+            throws NotFoundException {
         Post post = postService.updatePost(
                 id,
                 postRequest.getTitle(),
                 postRequest.getContent(),
                 postRequest.getAuthor(),
-                postRequest.getCategoryId()
-        );
+                postRequest.getCategoryId());
         if (post == null) {
             throw new NotFoundException("Post with ID " + id + " not found.");
         }

@@ -18,6 +18,7 @@ public class Category {
     private UUID id;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private List<Post> posts;
 
     public Category(UUID id, String name) {

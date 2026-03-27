@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/v1/categories")
 public class CategoryController {
 
@@ -43,7 +44,8 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Category> updateCategory(@PathVariable UUID id, @RequestBody CategoryRequest categoryRequest) throws NotFoundException {
+    public ResponseEntity<Category> updateCategory(@PathVariable UUID id, @RequestBody CategoryRequest categoryRequest)
+            throws NotFoundException {
         Category category = categoryService.updateCategory(id, categoryRequest.getName());
         if (category == null) {
             throw new NotFoundException("Category with ID " + id + " not found.");

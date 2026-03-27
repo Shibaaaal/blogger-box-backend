@@ -1,5 +1,6 @@
 package com.dauphine.blogger.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -19,14 +20,23 @@ public class Post {
     @Column(name = "content", length = 5000)
     private String content;
 
+    @JsonIgnore
     @Column(name = "author")
     private String author;
 
-    @Column(name = "created_at")
+    @Column(name = "created_date")
     private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        if (this.createdAt == null) {
+            this.createdAt = LocalDateTime.now();
+        }
+    }
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties("posts")
     private Category category;
 
     public Post() {
